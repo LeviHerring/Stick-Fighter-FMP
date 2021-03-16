@@ -9,7 +9,7 @@ using UnityEngine;
 /// 10/03/2021
 /// </summary>
 
-public class ControllerWarning : MonoBehaviour
+public class ControllerManager : MonoBehaviour
 
 {
     public Texture2D _controllerNotDetected;                                                                                 //Creates slot in inspector to assign a controller not detected warning text
