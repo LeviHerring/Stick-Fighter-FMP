@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -9,30 +10,28 @@ using UnityEngine;
 /// 10/03/2021
 /// </summary>
 
-public class ControllerWarning : MonoBehaviour
+public class ControllerWarning : ControllerManager
 
 {
-    public Texture2D _controllerNotDetected;                                                                                 //Creates slot in inspector to assign a controller not detected warning text
+    public Texture2D _controllerWarningBackground;                                                                          //assing the background for the warning
+    public Texture2D _controllingWarningText;                                                                               //assign the text for warning
+    public Texture2D _controllerDetectedText;                                                                               //creates slot in inspector to 
 
-    public bool _pS4Controller;                                                                                    //creates a bool for when a ps4 controller is connected 
-    public bool _xBOXController;                                                                                   //creates a bool for when an xbox controller is connected 
-    public bool _controllerDetected;                                                                               //creates bool for when a controller is active
+    public float _controllerWarningFadeValue;                                                                       //defines for fade value of the text 
+    private float _controllerWarningFadeSpeed = 0.25f;                                                                  //defines fade speed for warning text
+    private bool _controllerConditionsMet;                                                                                //defines if the controller conditions are met for the game to continue
 
-    public static bool _startUpFinished;                                                                           //creates bool for when start up is finished 
 
      void Awake()
     {
-        _pS4Controller = false;                                                                                       //ps4 controller is false on awake
-        _xBOXController = false;                                                                                      //xbox contro0ller is false on awake
-        _controllerDetected = false;                                                                                  //no controller detected on awake
-
-        _startUpFinished = false;                                                                                   //starty up finished is false on awake
+                                                                                        //starty up finished is false on awake
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);                                                                                     //don't destroy this game object when loading a new scene
+        _controllerWarningFadeValue = 1;                                                                                //makes the fade value one
+        _controllerConditionsMet = false;                                                                               //conditions are not met on startup
     }
 
     // Update is called once per frame
