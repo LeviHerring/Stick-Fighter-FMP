@@ -14,7 +14,7 @@ public class ControllerWarning : ControllerManager
 
 {
     public Texture2D _controllerWarningBackground;                                                                          //assing the background for the warning
-    public Texture2D _controllingWarningText;                                                                               //assign the text for warning
+    public Texture2D _controllerWarningText;                                                                               //assign the text for warning
     public Texture2D _controllerDetectedText;                                                                               //creates slot in inspector to 
 
     public float _controllerWarningFadeValue;                                                                       //defines for fade value of the text 
@@ -62,12 +62,12 @@ public class ControllerWarning : ControllerManager
 
         if (_controllerWarningFadeValue < 0)                                                                 //if the fade value is less than zero
         {
-            _controllerWarningFadeValue == 0;                                                               //then set the value to equal zero
+            _controllerWarningFadeValue = 0;                                                               //then set the value to equal zero
         }
 
         if (_controllerWarningFadeValue == 0)                                                        //if fade value is 0
         {
-            _startupFinished = true;                                                                 //set startup finish to true
+            _startUpFinished = true;                                                                 //set startup finish to true
             SceneManager.LoadScene("MainMenu");                                                                     //load main menu
         }
     }
@@ -83,6 +83,7 @@ public class ControllerWarning : ControllerManager
     private void OnGUI()
     {
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _controllerWarningBackground);                                         //draw a texture at the corner of the screen 0,0 background
+
         GUI.color = new Color(1, 1, 1, _controllerWarningFadeValue);                                                                        //gui colour is equal to black pls fade value
 
         GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), _controllerWarningText);                                                //draw the warning text
